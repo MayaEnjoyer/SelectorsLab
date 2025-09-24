@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS Selectors — Specificity Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section aria-labelledby="sec-title">
+    <h2 id="sec-title" class="sr-only">Section selector demo</h2>
+    Selector: <code>section</code> — applies to the &lt;section&gt; tag; specificity
+    <strong>1</strong> (0,0,0,1)
+</section>
+
+<div class="note">
+    Selector: <code>.note</code> — element with class <code>note</code>;
+    specificity <strong>10</strong> (0,0,1,0)
+</div>
+
+<div id="hero">
+    Selector: <code>#hero</code> — element with ID <code>hero</code>;
+    specificity <strong>100</strong> (0,1,0,0)
+</div>
+
+<div data-role="primary">
+    Selector: <code>[data-role="primary"]</code> — attribute selector;
+    specificity <strong>10</strong> (0,0,1,0)
+</div>
+
+<div class="wrap">
+    <q>
+        Selector: <code>.wrap q</code> — targets &lt;q&gt; inside an element with
+        class <code>wrap</code>; specificity <strong>11</strong> (0,0,1,1)
+    </q>
+</div>
+
+<div class="ex6">
+    <p>
+        Selector: <code>div.ex6 &gt; p</code> — targets &lt;p&gt; that are direct
+        children of <code>div.ex6</code>; specificity <strong>12</strong> (0,0,1,2)
+    </p>
+</div>
+
+<div class="adj">
+    <h3>Heading</h3>
+    <p>
+        Selector: <code>.adj h3 + p</code> — the first &lt;p&gt; immediately after
+        &lt;h3&gt; in <code>.adj</code>; specificity <strong>12</strong> (0,0,1,2)
+    </p>
+</div>
+
+<div class="gen">
+    <h4>Subheading</h4>
+    <p>
+        Selector: <code>.gen h4 ~ p</code> — all &lt;p&gt; that follow an
+        &lt;h4&gt; in <code>.gen</code> (here: one); specificity
+        <strong>12</strong> (0,0,1,2)
+    </p>
+</div>
+
+<ul id="menu">
+    <li class="item">
+        <a class="active" href="https://github.com/MayaEnjoyer/Portfolio_site">
+            Selector: <code>ul#menu li.item &gt; a.active[href^="https"]</code> —
+            link inside the menu; specificity <strong>133</strong> (0,1,3,3)
+        </a>
+    </li>
+</ul>
+
+<div id="box10">
+    <article data-kind="demo" aria-labelledby="art-title">
+        <h2 id="art-title" class="sr-only">Article selector demo</h2>
+        <p class="tip">
+            Selector: <code>#box10 article[data-kind="demo"] &gt; p.tip</code> —
+            mixed combination; specificity <strong>122</strong> (0,1,2,2)
+        </p>
+    </article>
+</div>
+
+</body>
+</html>
